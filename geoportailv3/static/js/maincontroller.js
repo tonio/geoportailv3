@@ -27,7 +27,6 @@ goog.require('ol.View');
 goog.require('ol.control.FullScreen');
 goog.require('ol.control.Zoom');
 goog.require('ol.control.ZoomToExtent');
-goog.require('ol.interaction.Select');
 goog.require('ol.layer.Tile');
 goog.require('ol.proj');
 goog.require('ol.source.OSM');
@@ -223,27 +222,12 @@ app.MainController = function(
     }
   }, this));
 
-  var selectInteraction = new ol.interaction.Select({
-    filter: goog.bind(function(feature, layer) {
-      return this.drawnFeatures.getArray().indexOf(feature) != -1;
-    }, this)
-  });
-  goog.events.listen(selectInteraction, ol.interaction.SelectEventType.SELECT,
-      function() {$scope.$apply();});
-  this.map_.addInteraction(selectInteraction);
-
-  /**
-   * @type {ol.interaction.Select}
-   * @export
-   */
-  this.selectInteraction = selectInteraction;
-
   /**
    * The selected features.
    * @type {ol.Collection.<ol.Feature>}
    * @export
    */
-  this.selectedFeatures = selectInteraction.getFeatures();
+  this.selectedFeatures = new ol.Collection();
 
   var drawOverlay = ngeoFeatureOverlayMgr.getFeatureOverlay();
   drawOverlay.setFeatures(this.drawnFeatures);

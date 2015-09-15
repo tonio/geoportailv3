@@ -17,6 +17,7 @@ goog.provide('app.drawDirective');
 
 goog.require('app');
 goog.require('ol.CollectionEventType');
+goog.require('ol.MapBrowserEvent.EventType');
 goog.require('ol.events.condition');
 goog.require('ol.geom.GeometryType');
 goog.require('ol.interaction.Draw');
@@ -96,6 +97,12 @@ app.DrawController = function($scope, ngeoDecorateInteraction,
    */
   this.scope_ = $scope;
 
+  /**
+   * @type {app.FeaturePopup}
+   * @private
+   */
+  this.featurePopup_ = appFeaturePopup;
+
   var drawPoint = new ol.interaction.Draw({
     features: this.features,
     type: ol.geom.GeometryType.POINT
@@ -147,6 +154,8 @@ app.DrawController = function($scope, ngeoDecorateInteraction,
       function() {
         appFeaturePopup.hide();
       });
+
+  this.initSelectHandler_();
 };
 
 
@@ -163,6 +172,32 @@ app.DrawController.prototype.onDrawEnd_ = function(event) {
       event.target.setActive(false);
     });
   }, this), 0);
+};
+
+
+/**
+ * Initialize listener on click events. This listener will handle on map
+ * features selection.
+ * @private
+ */
+app.DrawController.prototype.initSelectHandler_ = function() {
+  goog.events.listen(this.map, ol.MapBrowserEvent.EventType.SINGLECLICK,
+      goog.bind(function(evt) {
+        this.selectedFeatures.clear();
+        var feature = this.map.forEachFeatureAtPixel(evt.pixel,
+            function(feature, layer) {
+              if (this.features.getArray().indexOf(feature) != -1) {
+                return feature;
+              }
+            }, this);
+        this.selectedFeatures.push(feature);
+        this.scope_.$apply();
+        if (!goog.isDef(feature)) {
+          this.featurePopup_.hide();
+        } else {
+          this.featurePopup_.show(feature, evt.coordinate);
+        }
+      }, this), true, this);
 };
 
 app.module.controller('AppDrawController', app.DrawController);

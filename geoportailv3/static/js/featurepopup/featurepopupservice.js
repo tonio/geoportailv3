@@ -22,8 +22,7 @@ app.FeaturePopup = function() {
    * @private
    */
   this.overlay_ = new ol.Overlay({
-    element: goog.dom.createDom(goog.dom.TagName.DIV, 'feature-popup',
-        'something'),
+    element: goog.dom.createDom(goog.dom.TagName.DIV, 'feature-popup'),
     autoPan: true
   });
 };
@@ -39,9 +38,11 @@ app.FeaturePopup.prototype.init = function(map) {
 
 /**
  * @param {ol.Feature} feature
+ * @param {ol.Coordinate=} opt_anchor
  */
-app.FeaturePopup.prototype.show = function(feature) {
-  var anchor = this.getAnchor(feature);
+app.FeaturePopup.prototype.show = function(feature, opt_anchor) {
+  goog.asserts.assertInstanceof(feature, ol.Feature);
+  var anchor = goog.isDef(opt_anchor) ? opt_anchor : this.getAnchor(feature);
   this.overlay_.setPosition(anchor);
 };
 
@@ -49,7 +50,7 @@ app.FeaturePopup.prototype.show = function(feature) {
 /**
  */
 app.FeaturePopup.prototype.hide = function() {
-  this.overlay_.setPosition();
+  this.overlay_.setPosition(undefined);
 };
 
 
