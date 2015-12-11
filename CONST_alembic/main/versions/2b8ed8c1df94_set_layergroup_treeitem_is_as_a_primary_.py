@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# -*- coding: utf-8 -*-
 
 # Copyright (c) 2015, Camptocamp SA
 # All rights reserved.
@@ -28,27 +27,34 @@
 # of the authors and should not be interpreted as representing official policies,
 # either expressed or implied, of the FreeBSD Project.
 
-"""${message}
+"""Set layergroup_treeitem.is as a primary key
 
-Revision ID: ${up_revision}
-Revises: ${down_revision}
-Create Date: ${create_date}
+Revision ID: 2b8ed8c1df94
+Revises: 26a8c51827c6
+Create Date: 2015-10-29 16:11:24.760733
 """
 
 from alembic import op, context
 
 # revision identifiers, used by Alembic.
-revision = "${up_revision}"
-down_revision = "${down_revision}"
+revision = "2b8ed8c1df94"
+down_revision = "32527659d57b"
+branch_labels = ("1.6",)
+depends_on = None
 
 
 def upgrade():
     schema = context.get_context().config.get_main_option("schema")
 
-    ${upgrades if upgrades else "# Instructions"}
+    op.create_primary_key(
+        "layergroup_treeitem_pkey", "layergroup_treeitem", ["id"],
+        schema=schema
+    )
 
 
 def downgrade():
     schema = context.get_context().config.get_main_option("schema")
 
-    ${downgrades if downgrades else "# Instructions"}
+    op.drop_constraint(
+        "layergroup_treeitem_pkey", "layergroup_treeitem", schema=schema
+    )

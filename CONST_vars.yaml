@@ -71,9 +71,6 @@ vars:
     closure_library_path: 'process.stdout.write(require("openlayers/node_modules/closure-util").getLibraryPath())'
     node_modules_path: "{directory}/node_modules"
 
-    layers: {}
-    reset_password: {}
-
     # pyramid_closure configuration
     # Each item in the roots_with_prefix array is an array with two elements. The
     # first element is the path pyramid_closure passed to request.static_url. The
@@ -179,6 +176,9 @@ vars:
         # external_mapserv_wfs_url parameter
         #external_mapserv_wfs_url:
 
+        # Using Geoserver as backend?
+        geoserver: false
+
     tinyowsproxy:
         # URL to internal TinyOWS instance
         tinyows_url: http://localhost/{instanceid}/tinyows
@@ -194,6 +194,14 @@ vars:
         # the host has to be set explicitly in a vhost environment.
         # tinyows_host: {host}
 
+    fulltextsearch:
+        defaultlimit: 30
+        maxlimit: 200
+        languages:
+            fr: french
+            en: english
+            de: german
+
     servers:
 
     # The "raster web services" configuration. See the "raster"
@@ -208,15 +216,11 @@ vars:
     # Define whether the MapServer proxy should hide the OGC capabilities.
     hide_capabilities: false
 
-    # Enable or disable the filtering of the layers using Mapserver runtime
-    # substitution variables in METADATA to hide protected layers from the
-    # GetCapabilities.
-    # Be careful as too many protected layers will cause an error because Apache has a
-    # 8190 characters hard limit for GET query length.
-    use_security_metadata: false
-
     # For print proxy
     print_url: http://localhost:8080/print-{instanceid}/print/{package}
+
+    pdfreport:
+        print_url: http://localhost:8080/print-{instanceid}/print/{package}
 
     # For base layers
     tiles_url:
