@@ -1,14 +1,15 @@
 # 
 # Translators:
 # Andrea Donno <andrea.donno@me.com>, 2015
+# Andrea Donno <andrea.donno@me.com>, 2015
 # Francis Kaell <francis.kaell@act.etat.lu>, 2015
 # geoportal-jk <jaykayone@gmail.com>, 2015
 # patrick weber <pweber@spatialbit.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: portail\n"
-"PO-Revision-Date: 2015-08-11 07:59+0000\n"
-"Last-Translator: patrick weber <pweber@spatialbit.com>\n"
+"PO-Revision-Date: 2016-01-28 07:52+0000\n"
+"Last-Translator: eRenaud Michaëlis <renaud.michaelis@act.etat.lu>\n"
 "Language-Team: German (http://www.transifex.com/geoportail/geoportailv3-lu/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: geoportailv3/templates/index.html:128
+#: geoportailv3/templates/index.html:130
 msgid "+ Add layers"
 msgstr "+ Layer hinzufügen"
 
@@ -24,63 +25,67 @@ msgstr "+ Layer hinzufügen"
 msgid "- Geoportal Luxembourg"
 msgstr "- Geoportal Luxemburg"
 
-#: geoportailv3/static/js/share/sharedirective.js:81
+#: geoportailv3/static/js/share/sharedirective.js:82
 msgid "- link from geoportail.lu"
 msgstr "Karte aus geoportal.lu"
 
-#: geoportailv3/templates/index.html:166
+#: geoportailv3/static/js/mymaps/mymaps.html:21
+msgid "<em>Aucune description</em>"
+msgstr ""
+
+#: geoportailv3/templates/index.html:172
 msgid ""
 "A <em>right click</em> (tap and hold on mobile) will display information "
 "about the current location."
 msgstr "Durch <em>Rechtsklick</em> (tippen und halten auf Mobil) werden Informationen über den aktuellen Standort angezeigt"
 
-#: geoportailv3/templates/index.html:169
+#: geoportailv3/templates/index.html:175
 msgid ""
 "A <em>short click</em> (tap on mobile) on a map feature will select the "
 "feature and show more information."
 msgstr "Durch <em>Klick</em> (tippen auf Mobil) auf einer Funktion wir diese Augewählt und weitere Informationen angezeigt"
 
-#: geoportailv3/templates/index.html:195
+#: geoportailv3/templates/index.html:201
 msgid "A Propos"
 msgstr "Über uns"
 
-#: geoportailv3/static/js/print/printdirective.js:174
+#: geoportailv3/static/js/print/printdirective.js:184
 msgid "A0 landscape"
 msgstr "A0 quer"
 
-#: geoportailv3/static/js/print/printdirective.js:173
+#: geoportailv3/static/js/print/printdirective.js:183
 msgid "A0 portrait"
 msgstr "A0 hoch"
 
-#: geoportailv3/static/js/print/printdirective.js:172
+#: geoportailv3/static/js/print/printdirective.js:182
 msgid "A1 landscape"
 msgstr "A1 quer"
 
-#: geoportailv3/static/js/print/printdirective.js:171
+#: geoportailv3/static/js/print/printdirective.js:181
 msgid "A1 portrait"
 msgstr "A1 hoch"
 
-#: geoportailv3/static/js/print/printdirective.js:170
+#: geoportailv3/static/js/print/printdirective.js:180
 msgid "A2 landscape"
 msgstr "A2 quer"
 
-#: geoportailv3/static/js/print/printdirective.js:169
+#: geoportailv3/static/js/print/printdirective.js:179
 msgid "A2 portrait"
 msgstr "A2 hoch"
 
-#: geoportailv3/static/js/print/printdirective.js:168
+#: geoportailv3/static/js/print/printdirective.js:178
 msgid "A3 landscape"
 msgstr "A3 quer"
 
-#: geoportailv3/static/js/print/printdirective.js:167
+#: geoportailv3/static/js/print/printdirective.js:177
 msgid "A3 portrait"
 msgstr "A3 hoch"
 
-#: geoportailv3/static/js/print/printdirective.js:166
+#: geoportailv3/static/js/print/printdirective.js:176
 msgid "A4 landscape"
 msgstr "A4 quer"
 
-#: geoportailv3/static/js/print/printdirective.js:165
+#: geoportailv3/static/js/print/printdirective.js:175
 msgid "A4 portrait"
 msgstr "A4 hoch "
 
@@ -88,23 +93,58 @@ msgstr "A4 hoch "
 msgid "Abort"
 msgstr "Abbrechen"
 
-#: geoportailv3/static/js/search/searchdirective.js:385
+#: geoportailv3/static/js/search/searchdirective.js:411
 msgid "Addresses"
 msgstr "Adressen"
 
-#: geoportailv3/templates/index.html:196
+#: geoportailv3/static/js/query/mo.html:6
+msgid "Affaire"
+msgstr "Fall"
+
+#: geoportailv3/templates/index.html:202
 msgid "Aide"
 msgstr "Hilfe"
+
+#: geoportailv3/static/js/draw/featurepopup.html:69
+msgid "Ajouter vignette"
+msgstr ""
+
+#: geoportailv3/static/js/draw/styleediting.html:85
+#: geoportailv3/static/js/draw/styleediting.html:97
+msgid "Angle"
+msgstr ""
+
+#: geoportailv3/static/js/draw/featurepopup.html:97
+#: geoportailv3/static/js/draw/styleediting.html:103
+#: geoportailv3/static/js/mymaps/mymaps.html:204
+msgid "Annuler"
+msgstr ""
+
+#: geoportailv3/static/js/draw/featurepopup.html:10
+msgid "Area:"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:26
+msgid "Attention!"
+msgstr ""
+
+#: geoportailv3/static/js/draw/symbolselector.html:34
+msgid "Aucun symbole disponible"
+msgstr ""
+
+#: geoportailv3/static/js/query/default.html:11
+msgid "Aucune information disponible pour cette couche"
+msgstr "Keine Informationen zu diesem Layer verfügbar"
 
 #: geoportailv3/static/js/measure/measure.html:11
 msgid "Azimut"
 msgstr "Azimut"
 
-#: geoportailv3/static/js/search/searchdirective.js:370
+#: geoportailv3/static/js/search/searchdirective.js:387
 msgid "Background"
 msgstr "Hintergrund"
 
-#: geoportailv3/static/js/search/searchdirective.js:359
+#: geoportailv3/static/js/search/searchdirective.js:376
 msgid "Background Layers"
 msgstr "Hintergrundkarten"
 
@@ -118,43 +158,64 @@ msgstr "Die Hintergrundkarte wurde ausgeschaltet weil sie nicht mit dem Layer {{
 msgid "Background layer:"
 msgstr "Hintergrundkarte:"
 
-#: geoportailv3/templates/index.html:119
+#: geoportailv3/static/js/draw/featurepopup.html:77
+#: geoportailv3/static/js/mymaps/mymaps.html:145
+msgid "Cancel"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:41
+msgid "Carte créée par"
+msgstr ""
+
+#: geoportailv3/templates/index.html:121
 msgid "Catalog"
 msgstr "Katalog"
+
+#: geoportailv3/static/js/mymaps/mymaps.html:178
+msgid "Catégorie"
+msgstr ""
 
 #: geoportailv3/static/js/themeswitcher/themes.html:4
 msgid "Changer"
 msgstr "Wechseln"
 
-#: geoportailv3/static/js/measure/measuredirective.js:136
+#: geoportailv3/static/js/draw/featurepopup.html:46
+msgid "Changer sens de la ligne"
+msgstr ""
+
+#: geoportailv3/static/js/draw/draw.html:19
+msgid "Circle"
+msgstr ""
+
+#: geoportailv3/static/js/measure/measuredirective.js:138
 msgid ""
 "Click to continue drawing the line<br>Double-click or click last point to "
 "finish"
 msgstr "Klicken Sie um mit dem Zeichnen der Linie fortzufahren <br> Doppelklick zum Abschließen"
 
-#: geoportailv3/static/js/measure/measuredirective.js:174
+#: geoportailv3/static/js/measure/measuredirective.js:176
 msgid ""
 "Click to continue drawing the polygon<br>Double-click or click last point to"
 " finish"
 msgstr "Klicken Sie um mit dem Zeichnen des Polygons fortzufahren <br> Doppelklick zum Abschließen"
 
-#: geoportailv3/static/js/measure/measuredirective.js:193
+#: geoportailv3/static/js/measure/measuredirective.js:195
 msgid "Click to finish"
 msgstr "Klicken Sie zum Abschließen"
 
-#: geoportailv3/static/js/measure/measuredirective.js:173
+#: geoportailv3/static/js/measure/measuredirective.js:175
 msgid "Click to start drawing area"
 msgstr "Klicken Sie um mit dem Messen der Fläche anzufangen"
 
-#: geoportailv3/static/js/measure/measuredirective.js:192
+#: geoportailv3/static/js/measure/measuredirective.js:194
 msgid "Click to start drawing azimut"
 msgstr "Klicken Sie um mit dem Messen des Azimuts anzufangen"
 
-#: geoportailv3/static/js/measure/measuredirective.js:152
+#: geoportailv3/static/js/measure/measuredirective.js:154
 msgid "Click to start drawing length"
 msgstr "Klicken Sie um mit dem Messen der Länge anzufangen"
 
-#: geoportailv3/static/js/measure/measuredirective.js:135
+#: geoportailv3/static/js/measure/measuredirective.js:137
 msgid "Click to start drawing profile"
 msgstr "Klicken Sie um mit dem Messen des Profils anzufangen"
 
@@ -163,37 +224,97 @@ msgstr "Klicken Sie um mit dem Messen des Profils anzufangen"
 msgid "Cliquez dans l'image pour agrandir"
 msgstr "Zum Vergrößern in das Bild klicken"
 
+#: geoportailv3/static/js/draw/styleediting.html:14
+#: geoportailv3/static/js/draw/styleediting.html:8
+#: geoportailv3/static/js/draw/symbolselector.html:71
+#: geoportailv3/static/js/draw/symbolselector.html:77
+msgid "Color"
+msgstr ""
+
+#: geoportailv3/static/js/query/mo.html:11
+msgid "Commander fichier GML"
+msgstr "GML Datei bestellen"
+
 #: geoportailv3/static/js/query/parcels.html:10
 msgid "Commander un extrait"
 msgstr "Einen Kadasterauszug bestellen"
 
 #: geoportailv3/static/js/query/parcels.html:4
+#: geoportailv3/static/js/query/parcels_go.html:4
+#: geoportailv3/static/js/query/viti_parcels.html:4
 msgid "Commune"
 msgstr "Gemeinde"
 
+#: geoportailv3/static/js/query/mo.html:7
+msgid "Commune administrative"
+msgstr "Administrative Gemeinde"
+
+#: geoportailv3/static/js/query/mo.html:8
+#: geoportailv3/static/js/query/viti_flik.html:4
+msgid "Commune cadastrale"
+msgstr "Kadastergemeinde"
+
+#: geoportailv3/static/js/draw/symbolselector.html:6
+msgid "Configurables"
+msgstr ""
+
+#: geoportailv3/static/js/query/parcels_go.html:10
+msgid "Constitution de dossier de mesurage"
+msgstr ""
+
 #: geoportailv3/static/js/layerinfo/popup.html:18
-#: geoportailv3/templates/index.html:197
+#: geoportailv3/templates/index.html:203
 msgid "Contact"
 msgstr "Kontakt"
 
 #: geoportailv3/static/js/query/parcels.html:7
+#: geoportailv3/static/js/query/parcels_go.html:7
 msgid "Contenance"
 msgstr "Kapazität"
 
-#: geoportailv3/templates/index.html:185
+#: geoportailv3/static/js/draw/featurepopup.html:45
+msgid "Continuer la ligne"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:89
+msgid "Copier dans ma carte"
+msgstr ""
+
+#: geoportailv3/templates/index.html:191
 msgid "Couches"
 msgstr "Layer"
 
-#: geoportailv3/static/js/authentication/authentication.html:13
+#: geoportailv3/static/js/authentication/authentication.html:12
 msgid "Create a new user account"
 msgstr "Ein neues Benutzerkonto erstellen"
 
+#: geoportailv3/static/js/mymaps/mymaps.html:2
+msgid "Create, save and share your own maps."
+msgstr ""
+
 #: geoportailv3/static/js/query/ng95.html:6
 msgid "Croquis"
-msgstr ""
+msgstr "Skizze"
 
 #: geoportailv3/static/js/query/ng95.html:8
 msgid "Croquis indisponible"
+msgstr "Skizze nicht verfügbar"
+
+#: geoportailv3/static/js/mymaps/mymaps.html:51
+msgid "Créer une copie"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:49
+#: geoportailv3/static/js/mymaps/mymaps.html:9
+msgid "Créer une nouvelle carte"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:91
+msgid "Créer une nouvelle carte à partir de ces dessins"
+msgstr ""
+
+#: geoportailv3/static/js/draw/styleediting.html:57
+msgid "Dashed"
 msgstr ""
 
 #: geoportailv3/static/js/query/affaires.html:10
@@ -201,34 +322,79 @@ msgid "Date"
 msgstr "Datum"
 
 #: geoportailv3/static/js/query/parcels.html:9
+#: geoportailv3/static/js/query/parcels_go.html:9
 msgid "Dernier mesurage"
 msgstr "Letze Messung"
 
+#: geoportailv3/static/js/mymaps/mymaps.html:185
+msgid "Dernière Actualisation"
+msgstr ""
+
 #: geoportailv3/static/js/layerinfo/popup.html:9
+#: geoportailv3/static/js/mymaps/mymaps.html:139
 #: geoportailv3/static/js/query/mymaps.html:6
 msgid "Description"
 msgstr "Beschreibung"
 
-#: geoportailv3/templates/index.html:203
+#: geoportailv3/templates/index.html:209
 msgid "Dessin"
 msgstr "Zeichnen"
+
+#: geoportailv3/static/js/mymaps/mymaps.html:82
+msgid "Dessins"
+msgstr ""
+
+#: geoportailv3/static/js/draw/styleediting.html:58
+msgid "Dotted"
+msgstr ""
 
 #: geoportailv3/static/js/profile/profile.html:5
 msgid "Draw a line on the map to display an elevation profile."
 msgstr "Zeichnen Sie eine Linie auf der Karte um ein Höhenprofil zu erhalten."
+
+#: geoportailv3/static/js/mymaps/mymaps.html:90
+msgid "Effacer tous les dessins"
+msgstr ""
 
 #: geoportailv3/static/js/locationinfo/locationinfo.html:19
 #: geoportailv3/static/js/query/ng95.html:4
 msgid "Elevation"
 msgstr "Höhe"
 
+#: geoportailv3/static/js/draw/featurepopup.html:12
+msgid "Elevation: {{ ctrl.featureElevation }}"
+msgstr ""
+
 #: geoportailv3/static/js/share/share.html:13
 msgid "Email"
 msgstr "Email"
 
+#: geoportailv3/static/js/draw/featurepopup.html:43
+#: geoportailv3/static/js/mymaps/mymaps.html:57
+msgid "Exporter un GPX"
+msgstr ""
+
+#: geoportailv3/static/js/draw/featurepopup.html:44
+#: geoportailv3/static/js/mymaps/mymaps.html:58
+msgid "Exporter un KML"
+msgstr ""
+
 #: geoportailv3/static/js/share/share.html:4
 msgid "Facebook"
 msgstr "Facebook"
+
+#: geoportailv3/static/js/draw/symbolselector.html:102
+#: geoportailv3/static/js/mymaps/mymaps.html:55
+msgid "Fermer"
+msgstr ""
+
+#: geoportailv3/static/js/query/pcn_pag.html:7
+msgid "Generer Rapport (peut prendre 30 sec)"
+msgstr ""
+
+#: geoportailv3/static/js/query/pcn_pag.html:3
+msgid "Generer un rapport pour toutes les selections"
+msgstr ""
 
 #: geoportailv3/static/js/query/affaires.html:6
 msgid "Geometre"
@@ -238,31 +404,47 @@ msgstr "Vermesser"
 msgid "Google Plus"
 msgstr "Google Plus"
 
-#: geoportailv3/static/js/authentication/authentication.html:12
+#: geoportailv3/static/js/authentication/authentication.html:11
 msgid "I lost my password"
 msgstr "Ich habe mein Passwort vergessen"
 
-#: geoportailv3/templates/index.html:221
+#: geoportailv3/static/js/query/pcn_pag.html:6
+msgid "Identifiant"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:59
+msgid "Importer un GPX"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:60
+msgid "Importer un KML"
+msgstr ""
+
+#: geoportailv3/static/js/draw/symbolselector.html:100
+msgid "Importer un symbole"
+msgstr ""
+
+#: geoportailv3/templates/index.html:225
 msgid "Imprimer"
 msgstr "Drucken"
 
-#: geoportailv3/templates/index.html:191
+#: geoportailv3/templates/index.html:197
 msgid "Infos"
 msgstr "Infos"
-
-#: geoportailv3/static/js/authentication/authentication.html:11
-msgid "Invalid username or password"
-msgstr "Ungültiger Benutzername oder Passwort"
 
 #: geoportailv3/static/js/layerinfo/popup.html:17
 msgid "Keywords"
 msgstr "Schlüsselwörter"
 
-#: geoportailv3/static/js/search/searchdirective.js:323
+#: geoportailv3/static/js/draw/draw.html:7
+msgid "Label"
+msgstr ""
+
+#: geoportailv3/static/js/search/searchdirective.js:336
 msgid "Layers"
 msgstr "Layer"
 
-#: geoportailv3/templates/index.html:198
+#: geoportailv3/templates/index.html:204
 msgid "Legalites"
 msgstr "Legales"
 
@@ -273,6 +455,24 @@ msgstr "Legende"
 #: geoportailv3/static/js/measure/measure.html:3
 msgid "Length"
 msgstr "Länge"
+
+#: geoportailv3/static/js/draw/featurepopup.html:8
+msgid "Length:"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:27
+msgid ""
+"Les couches sélectionnées dans le catalogue sont différentes de celles chargées avec votre carte.\n"
+"        Voulez vous sauvegarder ces modifications dans votre carte?"
+msgstr ""
+
+#: geoportailv3/static/js/query/parcels_go.html:12
+msgid "Lien vers les mesurages"
+msgstr ""
+
+#: geoportailv3/static/js/draw/draw.html:11
+msgid "Line"
+msgstr ""
 
 #: geoportailv3/static/js/layerinfo/popup.html:27
 msgid "Link to the metadata"
@@ -286,7 +486,7 @@ msgstr "Standortkoordinaten"
 msgid "Login"
 msgstr "Einloggen"
 
-#: geoportailv3/static/js/authentication/authentication.html:23
+#: geoportailv3/static/js/authentication/authentication.html:22
 msgid "Logout"
 msgstr "Abmelden"
 
@@ -294,16 +494,41 @@ msgstr "Abmelden"
 msgid "Longeueur"
 msgstr "Länge"
 
-#: geoportailv3/templates/index.html:213
+#: geoportailv3/static/js/query/parcels_go.html:16
+#: geoportailv3/static/js/query/parcels_go.html:17
+msgid "MES_TYPE_{{file.filename | limitTo : 1 :5}}"
+msgstr ""
+
+#: geoportailv3/static/js/draw/symbolselector.html:7
+msgid "Mes symboles"
+msgstr ""
+
+#: geoportailv3/static/js/query/mo.html:9
+msgid "Mesurage"
+msgstr "Vermessungsakte"
+
+#: geoportailv3/static/js/query/parcels_go.html:20
+msgid "Mesurage non disponible"
+msgstr ""
+
+#: geoportailv3/templates/index.html:217
 msgid "Mesurer"
 msgstr "Messen"
 
-#: geoportailv3/templates/index.html:188
-msgid "My Maps"
-msgstr "My maps"
+#: geoportailv3/static/js/draw/featurepopup.html:53
+msgid "Modification des informations"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:114
+msgid "Modify title and description of the map"
+msgstr ""
+
+#: geoportailv3/templates/index.html:194
+msgid "My Maps<span ng-show=\"mainCtrl.layersChanged\">(*)</span>"
+msgstr ""
 
 #: geoportailv3/static/js/authentication/authentication.html:2
-#: geoportailv3/static/js/authentication/authentication.html:22
+#: geoportailv3/static/js/authentication/authentication.html:21
 msgid "My account"
 msgstr "Mein Konto"
 
@@ -316,6 +541,7 @@ msgid "Name"
 msgstr "Name"
 
 #: geoportailv3/static/js/query/parcels.html:8
+#: geoportailv3/static/js/query/parcels_go.html:8
 msgid "Nature"
 msgstr "Natur"
 
@@ -323,31 +549,79 @@ msgstr "Natur"
 msgid "No layer selected"
 msgstr "Kein Layer ausgewählt"
 
+#: geoportailv3/static/js/draw/symbolselector.html:20
 #: geoportailv3/static/js/query/cfl_hecto.html:3
 #: geoportailv3/static/js/query/mymaps.html:5
+#: geoportailv3/static/js/query/viti_kleinlage.html:3
+#: geoportailv3/static/js/query/viti_name.html:3
 msgid "Nom"
 msgstr "Name"
 
 #: geoportailv3/static/js/query/affaires.html:4
+#: geoportailv3/static/js/query/viti_parcels.html:3
 msgid "Numero"
 msgstr "Nummer"
 
+#: geoportailv3/static/js/query/flik.html:3
+#: geoportailv3/static/js/query/viti_flik.html:3
+msgid "Numero FLIK"
+msgstr "FLIK Nummer"
+
 #: geoportailv3/static/js/query/affaires.html:5
 #: geoportailv3/static/js/query/parcels.html:6
+#: geoportailv3/static/js/query/parcels_go.html:6
 msgid "Numero cadastral"
 msgstr "Katasternummer"
+
+#: geoportailv3/static/js/draw/featurepopup.html:100
+#: geoportailv3/static/js/draw/styleediting.html:106
+msgid "OK"
+msgstr ""
 
 #: geoportailv3/static/js/query/ng95.html:7
 msgid "Obtenir le fichier sous format pdf"
 msgstr "Die Datei als PDF erhalten"
 
-#: geoportailv3/templates/index.html:226
+#: geoportailv3/static/js/mymaps/mymaps.html:33
+msgid "Oui"
+msgstr ""
+
+#: geoportailv3/static/js/query/parcels_go.html:11
+msgid "Ouvrir la PF"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:155
+#: geoportailv3/static/js/mymaps/mymaps.html:6
+msgid "Ouvrir une carte"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:50
+msgid "Ouvrir une carte existante"
+msgstr ""
+
+#: geoportailv3/templates/index.html:230
 msgid "Partager"
 msgstr "Teilen"
 
 #: geoportailv3/static/js/authentication/authentication.html:8
 msgid "Password"
 msgstr "Passwort"
+
+#: geoportailv3/static/js/query/flik.html:5
+msgid "Perimetre"
+msgstr "Perimeter"
+
+#: geoportailv3/static/js/draw/styleediting.html:56
+msgid "Plain"
+msgstr ""
+
+#: geoportailv3/static/js/draw/draw.html:3
+msgid "Point"
+msgstr ""
+
+#: geoportailv3/static/js/draw/draw.html:15
+msgid "Polygon"
+msgstr ""
 
 #: geoportailv3/templates/index.html:63
 msgid "Preview"
@@ -361,6 +635,14 @@ msgstr "Profil"
 msgid "Proprietaire"
 msgstr "Besitzer"
 
+#: geoportailv3/static/js/mymaps/mymaps.html:126
+msgid "Public Map"
+msgstr ""
+
+#: geoportailv3/static/js/draw/symbolselector.html:8
+msgid "Publics"
+msgstr ""
+
 #: geoportailv3/static/js/query/mymaps.html:8
 msgid "Rating"
 msgstr "Wertung"
@@ -369,42 +651,106 @@ msgstr "Wertung"
 msgid "Recherche adresse, parcelles, couches ..."
 msgstr "Suche Adressen, Parzellen, Layer ..."
 
+#: geoportailv3/static/js/draw/symbolselector.html:13
+msgid "Rechercher un symbole"
+msgstr ""
+
 #: geoportailv3/static/js/query/affaires.html:7
 msgid "Region"
 msgstr "Region"
+
+#: geoportailv3/static/js/mymaps/mymaps.html:32
+msgid "Reset"
+msgstr ""
+
+#: geoportailv3/static/js/draw/featurepopup.html:72
+msgid "Retirer vignette"
+msgstr ""
 
 #: geoportailv3/static/js/layerinfo/popup.html:16
 msgid "Revision date"
 msgstr "Überarbeitungsdatum"
 
+#: geoportailv3/static/js/mymaps/mymaps.html:146
+#: geoportailv3/static/js/mymaps/mymaps.html:147
+msgid "Save changes"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:148
+msgid "Save new map"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:160
+msgid "Search Maps"
+msgstr ""
+
 #: geoportailv3/static/js/query/parcels.html:5
+#: geoportailv3/static/js/query/parcels_go.html:5
+#: geoportailv3/static/js/query/viti_parcels.html:5
 msgid "Section"
 msgstr "Sektion"
+
+#: geoportailv3/static/js/query/viti_flik.html:5
+msgid "Section cadastrale"
+msgstr "Kadastersektion"
+
+#: geoportailv3/static/js/share/shorturl.html:11
+msgid "Share only Mymaps"
+msgstr ""
 
 #: geoportailv3/static/js/locationinfo/locationinfo.html:4
 #: geoportailv3/static/js/share/shorturl.html:4
 msgid "Short Url"
 msgstr "Url"
 
+#: geoportailv3/static/js/draw/styleediting.html:63
+msgid "Show orientation"
+msgstr ""
+
+#: geoportailv3/static/js/draw/styleediting.html:80
+#: geoportailv3/static/js/draw/styleediting.html:92
+msgid "Size"
+msgstr ""
+
 #: geoportailv3/static/js/query/affaires.html:9
 msgid "Statut"
 msgstr "Status"
+
+#: geoportailv3/static/js/draw/styleediting.html:35
+#: geoportailv3/static/js/draw/styleediting.html:48
+msgid "Stroke width"
+msgstr ""
+
+#: geoportailv3/static/js/draw/styleediting.html:55
+msgid "Style"
+msgstr ""
+
+#: geoportailv3/static/js/draw/styleediting.html:3
+msgid "Style your drawing"
+msgstr ""
 
 #: geoportailv3/static/js/authentication/authentication.html:9
 msgid "Submit"
 msgstr "Einloggen"
 
+#: geoportailv3/static/js/mymaps/mymaps.html:53
+msgid "Supprimer"
+msgstr ""
+
 #: geoportailv3/static/js/measure/measure.html:7
+#: geoportailv3/static/js/query/flik.html:4
+#: geoportailv3/static/js/query/viti_flik.html:6
 msgid "Surface"
 msgstr "Fläche"
 
-#: geoportailv3/templates/index.html:144
-msgid "The MyMaps functionality is currently not available in this preview."
-msgstr "Die MyMaps Funktionalität ist derzeit nicht verfügbar."
+#: geoportailv3/static/js/draw/styleediting.html:70
+#: geoportailv3/static/js/draw/styleediting.html:73
+msgid "Symbol"
+msgstr ""
 
-#: geoportailv3/templates/index.html:207
-msgid "The drawing tools are currently not available in this preview"
-msgstr "Die Zeichnen Funktionalität ist derzeit nicht verfügbar."
+#: geoportailv3/static/js/draw/symbolselector.html:17
+msgid "Symbole"
+msgstr ""
 
 #: geoportailv3/static/js/exclusionmanagerservice.js:139
 msgid ""
@@ -432,6 +778,26 @@ msgstr "Thema"
 msgid "Title"
 msgstr "Titel"
 
+#: geoportailv3/static/js/mymaps/mymaps.html:115
+msgid "Title and description of the map"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:116
+msgid "Title and description of the map copy"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:171
+msgid "Titre"
+msgstr ""
+
+#: geoportailv3/static/js/mymaps/mymaps.html:121
+msgid "Titre de la carte"
+msgstr ""
+
+#: geoportailv3/static/js/draw/styleediting.html:40
+msgid "Transparency"
+msgstr ""
+
 #: geoportailv3/static/js/share/share.html:7
 msgid "Twitter"
 msgstr "Twitter"
@@ -446,11 +812,19 @@ msgstr "Typ"
 msgid "Username"
 msgstr "Benutzername"
 
+#: geoportailv3/static/js/draw/featurepopup.html:80
+msgid "Validate"
+msgstr ""
+
+#: geoportailv3/static/js/draw/symbolselector.html:1
+msgid "Veuillez choisir un symbole dans une des catégories"
+msgstr ""
+
 #: geoportailv3/static/js/print/print.html:13
 msgid "With legend"
 msgstr "Mit Legende"
 
-#: geoportailv3/templates/index.html:150
+#: geoportailv3/templates/index.html:155
 msgid "infos"
 msgstr "Informationen"
 
@@ -458,15 +832,15 @@ msgstr "Informationen"
 msgid "lang"
 msgstr "Sprache"
 
-#: geoportailv3/templates/index.html:106
+#: geoportailv3/templates/index.html:108
 msgid "layers"
 msgstr "Layer"
 
-#: geoportailv3/templates/index.html:114
+#: geoportailv3/templates/index.html:116
 msgid "my_layers"
 msgstr "Meine Layer"
 
-#: geoportailv3/templates/index.html:139
+#: geoportailv3/templates/index.html:142
 msgid "my_maps"
 msgstr "My Maps"
 
@@ -477,6 +851,10 @@ msgstr "Suchen"
 #: geoportailv3/templates/index.html:73
 msgid "user"
 msgstr "Benutzer"
+
+#: geoportailv3/static/js/draw/featurepopup.html:94
+msgid "Êtes-vous certain de vouloir effacer cet élément de la carte ?"
+msgstr ""
 
 #: theme.101
 msgid "preemption"
@@ -2341,6 +2719,10 @@ msgstr "HQ10 [hoheWahrscheinlichkeit]"
 #: l_wmts.429
 msgid "eau_new_HQ100_mittlere_Wahrscheinlichkeit"
 msgstr "HQ100 [mittlere Wahrscheinlichkeit]"
+
+#: lu_int_wms.1592
+msgid "pag pcn"
+msgstr ""
 
 #: lu_int_wms.766
 msgid "eau_new_HQextrem_merged_2010"
