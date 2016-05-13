@@ -44,6 +44,15 @@ ES_ANALYSIS = {
 }
 
 ES_MAPPINGS = {
+    'layer': {
+        'properties': {
+            'layer_id': {'type': 'string', 'index': 'not_analyzed'},
+            'name': {'type': 'string'},
+            'metadata_name': {'type': 'string'},
+            'keywords': {'type': 'string'},
+            'description': {'type': 'string'}
+        }
+    },
     'poi': {
         'properties': {
             'object_id': {'type': 'string', 'index': 'not_analyzed'},
