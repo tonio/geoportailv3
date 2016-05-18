@@ -9,23 +9,24 @@ from elasticsearch import helpers
 from elasticsearch.helpers import BulkIndexError
 from elasticsearch.exceptions import ConnectionTimeout
 from geoportailv3.lib.search import get_elasticsearch, get_index, ensure_index
+from pyramid.i18n import TranslationString
 
 """
 Utility functions for importing layers metadata into Elasticsearch
 """
 
 
-def update_document(index, type, obj_id, obj=None):
+def update_document(index, type, obj=None):
     doc = {
         "_index": index,
         "_type": type,
-        "_id": obj_id,
     }
     doc['_source'] = {}
-    doc['_source']['layer_id'] = obj_id
+    doc['_source']['layer_id'] = obj['layer_id']
     doc['_source']['name'] = obj['name']
     doc['_source']['description'] = obj['description']
     doc['_source']['keywords'] = obj['keywords']
+    doc['_source']['metadata_name'] = obj['metadata_name']
     return doc
 
 
@@ -35,9 +36,6 @@ def statuslog(text):
 
 
 def main():
-    env = bootstrap('development.ini')
-    from c2cgeoportal.models import DBSession, TreeItem
-    request = env['request']
     try:
         opts, args = getopt.getopt(sys.argv[1:], 'ri', ['reset', 'index'])
     except getopt.GetoptError as err:
@@ -52,6 +50,9 @@ def main():
             statuslog('\rChecking Index')
             index = True
 
+    env = bootstrap('development.ini')
+    from c2cgeoportal.models import DBSession, TreeItem
+    request = env['request']
     ensure_index(get_elasticsearch(request), get_index(request), reset)
 
     if index:
@@ -62,30 +63,37 @@ def main():
             'http://shop.geoportail.lu/Portail/inspire/webservices/getMD.jsp'
         doc_list = []
         for layer in layers:
-            layerData = dict(
-                name=layer.name,
-                layer_id=layer.id,
-                description='',
-                keywords='',
-                metadata_name=''
-            )
-            for metadata in layer.ui_metadata:
-                if metadata.name == 'metadata_id':
-                    params = dict(
-                        uid=metadata.value,
-                        lang='en'
+            for lang in request.registry.settings['available_locale_names']:
+                request.locale_name = lang
+                translated_name = request.localizer.translate(
+                    TranslationString(
+                        layer.name, domain='geoportailv3-client'
+                        )
                     )
-                    resp = requests.get(url=metadata_service_url,
-                                        params=params)
-                    data = json.loads(resp.text)
-                    layerData['keywords'] = data['root'][0]['keywords']
-                    layerData['description'] = data['root'][0]['description']
-                    layerData['metadata_name'] = data['root'][0]['name']
-            doc = update_document(get_index(request),
-                                  'layer',
-                                  layerData['layer_id'],
-                                  layerData)
-            doc_list.append(doc)
+                layerData = dict(
+                    name=translated_name,
+                    layer_id=layer.id,
+                    description='',
+                    keywords='',
+                    metadata_name=''
+                )
+                for metadata in layer.ui_metadata:
+                    if metadata.name == 'metadata_id':
+                        params = dict(
+                            uid=metadata.value,
+                            lang=lang
+                        )
+                        resp = requests.get(url=metadata_service_url,
+                                            params=params)
+                        data = json.loads(resp.text)
+                        layerData['keywords'] = data['root'][0]['keywords']
+                        layerData['description'] = \
+                            data['root'][0]['description']
+                        layerData['metadata_name'] = data['root'][0]['name']
+                doc = update_document(get_index(request),
+                                      'layer',
+                                      layerData)
+                doc_list.append(doc)
         try:
             helpers.bulk(client=get_elasticsearch(request),
                          actions=doc_list,
