@@ -55,8 +55,8 @@
         <li class="divider"></li>
         <li ng-click="ctrl.exportGpx(true)"><a href translate>Exporter un GPX</a></li>
         <li ng-click="ctrl.exportKml()"><a href translate>Exporter un KML</a></li>
-        <li ng-show="ctrl.isEditable()"><div class="mymapsFileUpload"><a href translate>Importer un GPX</a><input type="file" class="mymapsUpload"  ngeo-filereader="ctrl.gpxFileContent" ngeo-filereader-supported="ctrl.fileReaderSupported" /></div></li>
-        <li ng-show="ctrl.isEditable()"><div class="mymapsFileUpload"><a href translate>Importer un KML</a><input type="file" class="mymapsUpload"  ngeo-filereader="ctrl.kmlFileContent" ngeo-filereader-supported="ctrl.fileReaderSupported" /></div></li>
+        <li ng-show="ctrl.isEditable()"><div class="mymapsFileUpload"><a href translate>Importer un GPX</a><input id="gpxFile" type="file" class="mymapsUpload"  ngeo-filereader="ctrl.gpxFileContent" ngeo-filereader-supported="ctrl.fileReaderSupported"/></div></li>
+        <li ng-show="ctrl.isEditable()"><div class="mymapsFileUpload"><a href translate>Importer un KML</a><input id="kmlFile" type="file" class="mymapsUpload"  ngeo-filereader="ctrl.kmlFileContent" ngeo-filereader-supported="ctrl.fileReaderSupported"/></div></li>
       </ul>
     </li>
   </ul>
