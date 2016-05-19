@@ -9,7 +9,9 @@ from elasticsearch import helpers
 from elasticsearch.helpers import BulkIndexError
 from elasticsearch.exceptions import ConnectionTimeout
 from geoportailv3.lib.search import get_elasticsearch, get_index, ensure_index
-from pyramid.i18n import TranslationString
+from pyramid.i18n import TranslationStringFactory, make_localizer
+from pyramid.interfaces import ITranslationDirectories
+
 
 """
 Utility functions for importing layers metadata into Elasticsearch
@@ -20,10 +22,15 @@ def update_document(index, type, obj=None):
     doc = {
         "_index": index,
         "_type": type,
+        "_id": str(obj['layer_id']) + "_" + obj['language']
     }
     doc['_source'] = {}
+    doc['_source']['role_id'] = obj['role_id']
+    doc['_source']['public'] = obj['public']
+    doc['_source']['language'] = obj['language']
     doc['_source']['layer_id'] = obj['layer_id']
     doc['_source']['name'] = obj['name']
+    doc['_source']['name_translated'] = obj['name_translated']
     doc['_source']['description'] = obj['description']
     doc['_source']['keywords'] = obj['keywords']
     doc['_source']['metadata_name'] = obj['metadata_name']
@@ -53,29 +60,39 @@ def main():
     env = bootstrap('development.ini')
     from c2cgeoportal.models import DBSession, TreeItem
     request = env['request']
+    registry = env['registry']
     ensure_index(get_elasticsearch(request), get_index(request), reset)
 
     if index:
         layers = DBSession.query(TreeItem) \
-                          .filter((TreeItem.item_type == 'l_wmts') | (TreeItem.item_type == 'lu_int_wms') | (TreeItem.item_type == 'lu_ext_wms')) \
+                          .filter((TreeItem.item_type == 'l_wmts') |
+                                  (TreeItem.item_type == 'lu_int_wms') |
+                                  (TreeItem.item_type == 'lu_ext_wms')) \
                           .all()
         metadata_service_url = \
             'http://shop.geoportail.lu/Portail/inspire/webservices/getMD.jsp'
         doc_list = []
+        tdirs = registry.queryUtility(ITranslationDirectories, default=[])
+        tsf = TranslationStringFactory('geoportailv3-client')
         for layer in layers:
             for lang in request.registry.settings['available_locale_names']:
-                request.locale_name = lang
-                translated_name = request.localizer.translate(
-                    TranslationString(
-                        layer.name, domain='geoportailv3-client'
-                        )
-                    )
-                layerData = dict(
-                    name=translated_name,
+                localizer = make_localizer(lang, tdirs)
+                translated_name = localizer.translate(tsf(layer.name))
+                try:
+                    public = layer.public
+                except:
+                    public = True
+
+                layer_data = dict(
+                    name_translated=translated_name,
+                    name=layer.name,
                     layer_id=layer.id,
                     description='',
                     keywords='',
-                    metadata_name=''
+                    metadata_name='',
+                    language=lang,
+                    public=public,
+                    role_id=1
                 )
                 for metadata in layer.ui_metadata:
                     if metadata.name == 'metadata_id':
@@ -86,13 +103,13 @@ def main():
                         resp = requests.get(url=metadata_service_url,
                                             params=params)
                         data = json.loads(resp.text)
-                        layerData['keywords'] = data['root'][0]['keywords']
-                        layerData['description'] = \
+                        layer_data['keywords'] = data['root'][0]['keywords']
+                        layer_data['description'] = \
                             data['root'][0]['description']
-                        layerData['metadata_name'] = data['root'][0]['name']
+                        layer_data['metadata_name'] = data['root'][0]['name']
                 doc = update_document(get_index(request),
                                       'layer',
-                                      layerData)
+                                      layer_data)
                 doc_list.append(doc)
         try:
             helpers.bulk(client=get_elasticsearch(request),

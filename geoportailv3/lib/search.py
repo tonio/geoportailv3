@@ -46,11 +46,68 @@ ES_ANALYSIS = {
 ES_MAPPINGS = {
     'layer': {
         'properties': {
+            'language': {'type': 'string', 'index': 'not_analyzed'},
             'layer_id': {'type': 'string', 'index': 'not_analyzed'},
-            'name': {'type': 'string'},
-            'metadata_name': {'type': 'string'},
-            'keywords': {'type': 'string'},
-            'description': {'type': 'string'}
+            'name': {
+                'index': 'not_analyzed',
+                'type': 'string',
+            },
+            'name_translated': {
+                'type': 'string',
+                'analyzer': 'standard_analyzer',
+                'fields': {
+                    'ngram': {
+                        'type': 'string',
+                        'analyzer': 'ngram_analyzer',
+                        'search_analyzer': 'simplified_analyzer'
+                    },
+                    'simplified': {
+                        'type': 'string',
+                        'analyzer': 'simplified_analyzer',
+                        'search_analyzer': 'simplified_analyzer'
+                    }
+                }
+            },
+            'metadata_name': {
+                'type': 'string',
+                'analyzer': 'standard_analyzer',
+                'fields': {
+                    'ngram': {
+                        'type': 'string',
+                        'analyzer': 'ngram_analyzer',
+                        'search_analyzer': 'simplified_analyzer'
+                    },
+                    'simplified': {
+                        'type': 'string',
+                        'analyzer': 'simplified_analyzer',
+                        'search_analyzer': 'simplified_analyzer'
+                    }
+                }
+            },
+            'keywords': {
+                'type': 'string',
+                'analyzer': 'standard_analyzer',
+                'fields': {
+                    'ngram': {
+                        'type': 'string',
+                        'analyzer': 'ngram_analyzer',
+                        'search_analyzer': 'simplified_analyzer'
+                    },
+                    'simplified': {
+                        'type': 'string',
+                        'analyzer': 'simplified_analyzer',
+                        'search_analyzer': 'simplified_analyzer'
+                    }
+                }
+                },
+            'description': {
+                'type': 'string',
+                'analyzer': 'simplified_analyzer',
+                'search_analyzer': 'simplified_analyzer'
+                },
+            'public': {'type': 'boolean', 'index': 'not_analyzed'},
+            'params': {'type': 'string', 'index': 'not_analyzed'},
+            'role_id': {'type': 'integer', 'index': 'not_analyzed'},
         }
     },
     'poi': {

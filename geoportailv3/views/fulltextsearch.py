@@ -83,7 +83,7 @@ class FullTextSearchView(object):
         }
         filters = query_body['query']['filtered']['filter']['bool']
 
-        filters['must'].append({"type":{"value": "poi"}})
+        filters['must'].append({"type": {"value": "poi"}})
 
         if layer:
             filters['must'].append({"term": {"layer_name": layer}})
@@ -126,7 +126,6 @@ class FullTextSearchView(object):
                 features.append(feature)
         return FeatureCollection(features)
 
-
     @view_config(route_name='layersearch', renderer='json')
     def layersearch(self):
         if 'query' not in self.request.params:
@@ -144,6 +143,8 @@ class FullTextSearchView(object):
         if limit > maxlimit:
             limit = maxlimit
 
+        query_language = self.request.params.get('language', 'fr')
+
         query_body = {
             "query": {
                 "filtered": {
@@ -154,25 +155,22 @@ class FullTextSearchView(object):
                                     "multi_match": {
                                         "type": "most_fields",
                                         "fields": [
-                                            "metadata_name^3",
+                                            "keywords.ngram",
+                                            "keywords.simplified^2",
+                                            "metadata_name.ngram",
+                                            "metadata_name.simplified^2",
+                                            "metadata_name^4",
+                                            "name_translated^4",
+                                            "name_translated.ngram",
+                                            "name_translated.simplified^2",
                                             "description",
                                         ],
+                                        # "fuzziness": "auto",
                                         "operator": "and",
                                         "query": query
                                     }
                                 },
-                                {
-                                    "multi_match": {
-                                        "type": "most_fields",
-                                        "fields": [
-                                            "metadata_name",
-                                            "description"
-                                        ],
-                                        "fuzziness": "auto",
-                                        "operator": "and",
-                                        "query": query
-                                    }
-                                }
+                                {"term": {"language": query_language}},
                             ]
                         }
                     },
@@ -182,33 +180,41 @@ class FullTextSearchView(object):
                             "should": [],
                             "must_not": [],
                         }
-                    }
+                    },
                 }
             }
         }
         filters = query_body['query']['filtered']['filter']['bool']
 
-        filters['must'].append({"type":{"value": "layer"}})
-        # if self.request.user is None:
-        #     filters['must'].append({"term": {"public": True}})
-        # else:
-        #     role_id = self.request.user.role.id
-        #     filters['should'].append({"term": {"public": True}})
-        #     filters['should'].append({"term": {"role_id": role_id}})
+        filters['must'].append({"type": {"value": "layer"}})
+
+        if self.request.user is None:
+            filters['must'].append({"term": {"public": True}})
+        else:
+            role_id = self.request.user.role.id
+            filters['should'].append({"term": {"public": True}})
+            filters['should'].append({"term": {"role_id": role_id}})
 
         es = get_elasticsearch(self.request)
         search = es.search(index=get_index(self.request),
                            body=query_body,
-                           size=limit)
+                           size=limit*4)
         objs = search['hits']['hits']
         features = []
 
+        layer_ids = []
         for o in objs:
             s = o['_source']
-            feature = {
-                "metadata_name": s['metadata_name'],
-                "description": s['description'],
-                "layer_id": s['layer_id'],
-            }
-            features.append(feature)
-        return features
+            if s['layer_id'] not in layer_ids:
+                feature = {
+                    "language": s['language'],
+                    "name": s['name'],
+                    "name_translated": s['name_translated'],
+                    "metadata_name": s['metadata_name'],
+                    "description": s['description'],
+                    "keywords": s['keywords'],
+                    "layer_id": s['layer_id'],
+                }
+                features.append(feature)
+                layer_ids.append(s['layer_id'])
+        return features[:limit]
