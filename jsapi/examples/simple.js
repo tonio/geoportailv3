@@ -10,5 +10,7 @@ var map = new lux.Map({
   bgLayer          : 'streets_jpeg',
   layers           : [ '543' ],
   mousePosition    : true,
-  mousePositionSrs : 4326
+  mousePositionSrs : 4326,
+  bgSelector       : true,
+  bgSelectorTarget : 'mapContainer'
 });

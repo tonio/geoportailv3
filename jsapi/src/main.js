@@ -56,6 +56,12 @@ lux.Map = function(options) {
   }).then(function(json) {
     this.layersConfig = /** @type {luxx.LayersOptions} */ (json);
     this.addLayers_(layers);
+    // background layers selector
+    if (options.bgSelector && options.bgSelectorTarget) {
+      this.addBgSelector(options.bgSelectorTarget);
+    }
+    delete options.bgSelector;
+    delete options.bgSelectorTarget;
   }.bind(this));
 
   var viewOptions = {
@@ -235,6 +241,55 @@ lux.Map.prototype.addLayerById = function(layer) {
 };
 
 /**
+ * @param {Element|string} target Dom element or id of the element to render
+ * bgSelector in.
+ */
+lux.Map.prototype.addBgSelector = function(target) {
+  this.promise.then(function() {
+    if (!this.layersConfig) {
+      return;
+    }
+
+    var el = typeof target === 'string' ?
+        document.getElementById(target) :
+        target;
+    var container = document.createElement('div');
+    container.classList.add('lux-dropdown');
+    var select = document.createElement('select');
+    select.classList.add('lux-dropdown-select');
+
+    var backgrounds = Object.keys(this.layersConfig) // Dedicated service?
+    .filter(function(l) {
+      return isNaN(parseInt(l[0], 10));
+    })
+    .map(function(l) {
+      var r = this.layersConfig[l];
+      r.id = l;
+      return r;
+    }.bind(this));
+    var active = this.getLayers().item(0).get('name');
+    backgrounds.forEach(function(background) {
+      var option = document.createElement('option');
+      option.value = background.id;
+      option.innerText = background.name;
+      if (active == option.value) {
+        option.setAttribute('selected', 'selected');
+      }
+      select.appendChild(option);
+    });
+    container.appendChild(select);
+    el.appendChild(container);
+
+    select.addEventListener('change', function() {
+      this.getLayers().setAt(
+        0, lux.WMTSLayerFactory_(select.value, this.layersConfig[select.value].imageType)
+      );
+    }.bind(this));
+
+  }.bind(this));
+};
+
+/**
  * @param {string} name WMTS layer name.
  * @param {string} imageFormat Image format (e.g. "image/png").
  * @return {ol.layer.Tile} The layer.
@@ -246,7 +301,9 @@ lux.WMTSLayerFactory_ = function(name, imageFormat) {
   var url = '//wmts{1-2}.geoportail.lu/mapproxy_4_v3/wmts/{Layer}/' +
   '{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.' + imageExt;
 
+
   var layer = new ol.layer.Tile({
+    name  : name,
     source: new ol.source.WMTS({
       url             : url,
       layer           : name,

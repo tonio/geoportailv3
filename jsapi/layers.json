@@ -1,21 +1,26 @@
 {
     "basemap_2015_global" : {
+        "name"      : "Basemap",
         "imageType" : "image/png",
         "type"      : "WMTS"
     },
     "topo_bw_jpeg" : {
+        "name"      : "Topo B&W",
         "imageType" : "image/jpeg",
         "type"      : "WMTS"
     },
     "topogr_global" : {
+        "name"      : "Topo",
         "imageType" : "image/png",
         "type"      : "WMTS"
     },
     "orthogr_2013_global" : {
+        "name"      : "Orthophoto 2013",
         "imageType" : "image/jpeg",
         "type"      : "WMTS"
     },
     "streets_jpeg" : {
+        "name"      : "Ortho + streets",
         "imageType" : "image/png",
         "type"      : "WMTS"
     },
